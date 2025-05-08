@@ -1,0 +1,2 @@
+Archivos extraidos desde:
+https://www.kaggle.com/datasets/bhanupratapbiswas/inventory-analysis-case-study
