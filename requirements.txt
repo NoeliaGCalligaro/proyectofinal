@@ -1,0 +1,11 @@
+
+---
+
+### 📄 Archivo: `requirements.txt`
+
+```txt
+pandas
+numpy
+matplotlib
+scikit-learn
+category-encoders
