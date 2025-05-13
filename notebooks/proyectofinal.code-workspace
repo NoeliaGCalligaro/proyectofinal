@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "proyectofinal",
+			"path": ".."
+		},
+		{
+			"name": "data",
+			"path": "../../Documents/proyectofinal/data"
+		},
+		{
+			"name": "notebooks",
+			"path": "../../Documents/proyectofinal/notebooks"
+		}
+	],
+	"settings": {}
+}
