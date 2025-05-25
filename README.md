@@ -8,6 +8,9 @@ Este proyecto corresponde al trabajo final del bootcamp de Data Analytics de Soy
 - `*.csv`: Archivos con los datos utilizados para el análisis.
 - `.gitignore`: Configurado para excluir archivos innecesarios del repositorio.
 - `requirements.txt`: Lista de bibliotecas necesarias para ejecutar el proyecto.
+- `nanclajecloud` Archivo relacionado con la configuración o integración en entorno cloud
+
+
 
 > ⚠️ **Recomendación:** Mover los archivos `.csv` a una carpeta `data/` y excluir esa carpeta del repositorio para mantenerlo liviano.
 
@@ -50,3 +53,34 @@ Este proyecto corresponde al trabajo final del bootcamp de Data Analytics de Soy
 3. Instalar las dependencias:
 
     pip install -r requirements.txt
+
+
+📈 Contenido del análisis
+1. EDA Inicial
+Exploración preliminar de los datos para comprender su estructura, tipos, y calidad.
+
+Análisis de valores faltantes, estadísticas descriptivas de variables numéricas y categóricas.
+
+Visualizaciones básicas (boxplots, histogramas, gráficos de dispersión) para detectar outliers y distribuciones.
+
+Identificación inicial de variables relevantes para el análisis posterior.
+
+2. ETL (Extracción, Transformación y Carga)
+Integración y unión de los diferentes datasets para formar una base unificada.
+
+Limpieza avanzada: tratamiento de valores faltantes con técnicas de imputación y modelos predictivos (Random Forest con encoding mixto).
+
+Normalización y codificación de variables categóricas, incluyendo Target Encoding para variables de alta cardinalidad y OneHot Encoding para variables con pocas categorías.
+
+Generación de nuevas variables derivadas para enriquecer el análisis.
+
+Preparación final del dataset listo para análisis profundos y modelado.
+
+3. EDA Final
+Análisis más detallado y segmentado basado en el dataset limpio y completo.
+
+Visualizaciones avanzadas para evaluar desempeño y comportamiento de compras y ventas por proveedor, tienda y otras dimensiones.
+
+Gráficos de tendencias temporales para identificar patrones estacionales o cambios relevantes durante el año.
+
+Evaluación y validación de los resultados de la imputación y modelado, con métricas y gráficos que confirman la calidad del procesamiento.
