@@ -55,32 +55,80 @@ Este proyecto corresponde al trabajo final del bootcamp de Data Analytics de Soy
     pip install -r requirements.txt
 
 
-📈 Contenido del análisis
-1. EDA Inicial
-Exploración preliminar de los datos para comprender su estructura, tipos, y calidad.
 
-Análisis de valores faltantes, estadísticas descriptivas de variables numéricas y categóricas.
+📈 Contenido de Anclaje_cloud.ipynb
+☁️ ANCLAJE CLOUD - CARGA Y CONFIRMACIÓN DE DATOS EN BIGQUERY
 
-Visualizaciones básicas (boxplots, histogramas, gráficos de dispersión) para detectar outliers y distribuciones.
+👉 1. IMPORTACIÓN DE LIBRERÍAS
+📌 Se importa pandas como librería base.
 
-Identificación inicial de variables relevantes para el análisis posterior.
+👉 2. DEFINICIÓN DE NUEVOS DATOS A CARGAR
+📌 Se generan listas con datos simulados o nuevos para cargar en la base de datos.
+  Ejemplos:
+  - datos_new_data1 → Producto
+  - datos_new_data2 → Inventario inicial
+  - datos_new_data3 → Inventario final
+  - datos_new_data4 → Compras
+  - datos_new_data5 → Detalle de compras
+  - datos_new_data6 → Ventas
 
-2. ETL (Extracción, Transformación y Carga)
-Integración y unión de los diferentes datasets para formar una base unificada.
+👉 3. CARGA DE DATOS A BIGQUERY
+📌 Se utiliza la función cargar_datos_una_tabla para insertar datos en tablas específicas dentro del proyecto y dataset:
+  - Proyecto: soy-henry-459003
+  - Dataset: andes_insight
+  Tablas afectadas:
+  - Productos
+  - Inventario_inicial
+  - Inventario_final
+  - Compras
+  - Detalle_compras
+  - Ventas
 
-Limpieza avanzada: tratamiento de valores faltantes con técnicas de imputación y modelos predictivos (Random Forest con encoding mixto).
+👉 4. CONFIRMACIÓN DE DATOS CARGADOS
+📌 Se usa la función confirmar_nuevos_datos_cargados para verificar que los datos se hayan insertado correctamente en cada tabla
 
-Normalización y codificación de variables categóricas, incluyendo Target Encoding para variables de alta cardinalidad y OneHot Encoding para variables con pocas categorías.
+👉 5. ELIMINACIÓN DE DATOS CARGADOS
+📌 Se eliminan los datos previamente insertados en cada tabla utilizando la función eliminar_datos_cargados_por_columna.
+  Tablas afectadas:
+  - Productos
+  - Inventario_inicial
+  - Inventario_final
+  - Compras
+  - Detalle_compras
+  - Ventas
 
-Generación de nuevas variables derivadas para enriquecer el análisis.
+👉 6. CONFIRMACIÓN DE ELIMINACIÓN DE DATOS
+📌 Validación con confirmar_nuevos_datos_cargados para asegurar que los registros eliminados ya no se encuentren en las tablas.
 
-Preparación final del dataset listo para análisis profundos y modelado.
+📈 Contenido de proyecto_final.ipynb
+📥 FUENTE DE DATOS
+Antes del proceso de ETL, se toman los datos directamente desde la base de datos andes_insight, donde se encuentra el dataset previamente cargado y listo para trabajar.
 
-3. EDA Final
-Análisis más detallado y segmentado basado en el dataset limpio y completo.
+📈 ANALISIS GENERAL DEL DATASET
+      👉 1. IMPORTAMOS LIBRERIAS
+      👉 2. ABRIMOS DATASET
+      👉 3. EDA - ANALISIS EXPLORATORIO DE DATOS EDA - INCIAL
+           📌 A. Análisis Integral EDA  (dimension, columnas, tipo de columnas, nulos, estadísticas variables numericas, detalle de categóricas) 
+           📌 B. Análisis de Columnas con alta variabilidad
+           📌 C. Análisis de Columnas con valores númericos ceros
+      👉 4. ETL - PROCESO DE EXTRACCION, TRANSFORMACION Y LIMPIEZA DE DATOS
+           📌 A. Remplazamos valores nulos
+           📌 B. Remplazamos valores equivalente a cero en columnas númericas, cuando es necesario
+           📌 C. Cambiamos tipo de datos en variables catégoricas que se encuentran como númericas (Brand, Store,VendorNumber)
+      👉 5. DETERMINAR STOCK OPTIMO
+           📌 A. Definimos funcion de stock óptimo (Stock óptimo = Demanda diaria promedio × Tiempo de reposición promedio + Stock de seguridad) 
+           📌 B. Determinamos tiempo de reposión, y determinar media y desviacion std del tiempo de reposición medio para cada IventoryID 
+           📌 C. Determinamos demanda diaria, y determinar media y desviacion std de la demanda diaria para cada IventoryID
+           📌 D. Unimos en una tabla Inventario Incial, Inventario Final, Tiempo de Reposición y Demanda Diaria
+           📌 E. Estimamos tiempo de reposición para productos que no han sido comprados, y Estimar demanda diaria para productos que no han sido                         vendidos. La estimación la haremos con técnicas de Maching Learning (Random Forest).
+           📌 F. Determinamos Demanda diaria media. Analizar si se utiliza la demanda diaria media obtenida con Maching Learning, o la función de                        demanda diaria media obtenida con la funcion: Demada Estimada =Inventario Inicial + Compras - Inventario Final
+           📌 G  Determimos Stock Optimo y Demanda Estimada
+           📌 H. Exportamos nueva tabla Stock Óptimo
+      👉 6. EDA - ANALISIS EXPLORATORIO DE DATOS EDA - FINAL
 
-Visualizaciones avanzadas para evaluar desempeño y comportamiento de compras y ventas por proveedor, tienda y otras dimensiones.
 
-Gráficos de tendencias temporales para identificar patrones estacionales o cambios relevantes durante el año.
-
-Evaluación y validación de los resultados de la imputación y modelado, con métricas y gráficos que confirman la calidad del procesamiento.
+## Autores
+- **Amalia Granata** 
+- **Jenny Ortiz** 
+- **Luis Ladino** 
+- **Noelia Calligaro** 
