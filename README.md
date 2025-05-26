@@ -55,76 +55,87 @@ Este proyecto corresponde al trabajo final del bootcamp de Data Analytics de Soy
     pip install -r requirements.txt
 
 
+# 🧠 Proyecto Final - Optimización de Stock con Análisis de Datos en BigQuery y Python
 
-📈 Contenido de Anclaje_cloud.ipynb
-☁️ ANCLAJE CLOUD - CARGA Y CONFIRMACIÓN DE DATOS EN BIGQUERY
+Este repositorio contiene dos notebooks principales que conforman el proceso completo del proyecto:
 
-👉 1. IMPORTACIÓN DE LIBRERÍAS
-📌 Se importa pandas como librería base.
+- **📥 `Anclaje_cloud.ipynb`**: Encargado de la **carga, confirmación y eliminación de datos** en BigQuery.
+- **📈 `proyecto_final.ipynb`**: Realiza el **análisis exploratorio, ETL y cálculo del stock óptimo**.
 
-👉 2. DEFINICIÓN DE NUEVOS DATOS A CARGAR
-📌 Se generan listas con datos simulados o nuevos para cargar en la base de datos.
-  Ejemplos:
-  - datos_new_data1 → Producto
-  - datos_new_data2 → Inventario inicial
-  - datos_new_data3 → Inventario final
-  - datos_new_data4 → Compras
-  - datos_new_data5 → Detalle de compras
-  - datos_new_data6 → Ventas
+---
 
-👉 3. CARGA DE DATOS A BIGQUERY
-📌 Se utiliza la función cargar_datos_una_tabla para insertar datos en tablas específicas dentro del proyecto y dataset:
-  - Proyecto: soy-henry-459003
-  - Dataset: andes_insight
-  Tablas afectadas:
-  - Productos
-  - Inventario_inicial
-  - Inventario_final
-  - Compras
-  - Detalle_compras
-  - Ventas
+## ☁️ Anclaje en la Nube - `Anclaje_cloud.ipynb`
 
-👉 4. CONFIRMACIÓN DE DATOS CARGADOS
-📌 Se usa la función confirmar_nuevos_datos_cargados para verificar que los datos se hayan insertado correctamente en cada tabla
+Este notebook se encarga de simular y cargar datos nuevos en BigQuery, así como su verificación y limpieza.
 
-👉 5. ELIMINACIÓN DE DATOS CARGADOS
-📌 Se eliminan los datos previamente insertados en cada tabla utilizando la función eliminar_datos_cargados_por_columna.
-  Tablas afectadas:
-  - Productos
-  - Inventario_inicial
-  - Inventario_final
-  - Compras
-  - Detalle_compras
-  - Ventas
+### 🔹 1. Importación de librerías
+- Se importa `pandas` como librería base.
 
-👉 6. CONFIRMACIÓN DE ELIMINACIÓN DE DATOS
-📌 Validación con confirmar_nuevos_datos_cargados para asegurar que los registros eliminados ya no se encuentren en las tablas.
+### 🔹 2. Definición de nuevos datos a cargar
+- Generación de listas de datos simulados:
+  - `datos_new_data1` → Producto
+  - `datos_new_data2` → Inventario inicial
+  - `datos_new_data3` → Inventario final
+  - `datos_new_data4` → Compras
+  - `datos_new_data5` → Detalle de compras
+  - `datos_new_data6` → Ventas
 
-📈 Contenido de proyecto_final.ipynb
-📥 FUENTE DE DATOS
-Antes del proceso de ETL, se toman los datos directamente desde la base de datos andes_insight, donde se encuentra el dataset previamente cargado y listo para trabajar.
+### 🔹 3. Carga de datos en BigQuery
+- Uso de `cargar_datos_una_tabla` para insertar datos en las tablas del dataset `andes_insight` del proyecto `soy-henry-459003`:
+  - `Productos`
+  - `Inventario_inicial`
+  - `Inventario_final`
+  - `Compras`
+  - `Detalle_compras`
+  - `Ventas`
 
-📈 ANALISIS GENERAL DEL DATASET
-      👉 1. IMPORTAMOS LIBRERIAS
-      👉 2. ABRIMOS DATASET
-      👉 3. EDA - ANALISIS EXPLORATORIO DE DATOS EDA - INCIAL
-           📌 A. Análisis Integral EDA  (dimension, columnas, tipo de columnas, nulos, estadísticas variables numericas, detalle de categóricas) 
-           📌 B. Análisis de Columnas con alta variabilidad
-           📌 C. Análisis de Columnas con valores númericos ceros
-      👉 4. ETL - PROCESO DE EXTRACCION, TRANSFORMACION Y LIMPIEZA DE DATOS
-           📌 A. Remplazamos valores nulos
-           📌 B. Remplazamos valores equivalente a cero en columnas númericas, cuando es necesario
-           📌 C. Cambiamos tipo de datos en variables catégoricas que se encuentran como númericas (Brand, Store,VendorNumber)
-      👉 5. DETERMINAR STOCK OPTIMO
-           📌 A. Definimos funcion de stock óptimo (Stock óptimo = Demanda diaria promedio × Tiempo de reposición promedio + Stock de seguridad) 
-           📌 B. Determinamos tiempo de reposión, y determinar media y desviacion std del tiempo de reposición medio para cada IventoryID 
-           📌 C. Determinamos demanda diaria, y determinar media y desviacion std de la demanda diaria para cada IventoryID
-           📌 D. Unimos en una tabla Inventario Incial, Inventario Final, Tiempo de Reposición y Demanda Diaria
-           📌 E. Estimamos tiempo de reposición para productos que no han sido comprados, y Estimar demanda diaria para productos que no han sido                         vendidos. La estimación la haremos con técnicas de Maching Learning (Random Forest).
-           📌 F. Determinamos Demanda diaria media. Analizar si se utiliza la demanda diaria media obtenida con Maching Learning, o la función de                        demanda diaria media obtenida con la funcion: Demada Estimada =Inventario Inicial + Compras - Inventario Final
-           📌 G  Determimos Stock Optimo y Demanda Estimada
-           📌 H. Exportamos nueva tabla Stock Óptimo
-      👉 6. EDA - ANALISIS EXPLORATORIO DE DATOS EDA - FINAL
+### 🔹 4. Confirmación de datos cargados
+- Verificación de los datos insertados con `confirmar_nuevos_datos_cargados`.
+
+### 🔹 5. Eliminación de datos cargados
+- Uso de `eliminar_datos_cargados_por_columna` para limpiar las tablas anteriores.
+
+### 🔹 6. Confirmación de eliminación de datos
+- Validación final para asegurar que los datos fueron correctamente eliminados.
+
+---
+
+## 📊 Análisis y Optimización de Stock - `proyecto_final.ipynb`
+
+Este notebook toma los datos desde BigQuery y realiza todo el análisis para determinar el stock óptimo de productos.
+
+### 🔹 0. Fuente de datos
+- Conexión directa a la base de datos `andes_insight` luego del EDA.
+
+### 🔹 1. Importación de librerías
+
+### 🔹 2. Carga del dataset
+
+### 🔹 3. EDA Inicial (Análisis Exploratorio de Datos)
+- A. Análisis integral: dimensiones, tipos, nulos, estadísticas numéricas, categóricas.
+- B. Columnas con alta variabilidad.
+- C. Columnas con valores numéricos en cero.
+
+### 🔹 4. ETL - Extracción, Transformación y Limpieza
+- A. Reemplazo de valores nulos.
+- B. Reemplazo de ceros en columnas numéricas, si corresponde.
+- C. Conversión de tipos en variables categóricas (Brand, Store, VendorNumber).
+
+### 🔹 5. Determinación de Stock Óptimo
+- A. Fórmula: `Stock óptimo = Demanda diaria promedio × Tiempo de reposición promedio + Stock de seguridad`.
+- B. Cálculo del tiempo de reposición y su desviación estándar por `InventoryID`.
+- C. Cálculo de demanda diaria y su desviación estándar por `InventoryID`.
+- D. Unión de tablas: Inventario Inicial, Final, Tiempo de Reposición y Demanda Diaria.
+- E. Estimación con Machine Learning (Random Forest) para productos sin historial.
+- F. Comparación entre demanda estimada por ML vs. fórmula tradicional.
+- G. Determinación final de stock óptimo.
+- H. Exportación de tabla `stock_óptimo`.
+
+### 🔹 6. EDA Final
+- Revisión final del estado del dataset después del procesamiento.
+
+---
+
 
 
 ## Autores
